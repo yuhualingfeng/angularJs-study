@@ -15,11 +15,16 @@
 		<div class="col-md-2">
 			<!-- Slidebar content -->
 			Search: <input type="text" ng-model='query'>
+			SortBy:
+			<select ng-model='orderProp'>
+				<option value="name">Alphabetical</option>
+				<option value="age">Newest</option>
+			</select>
 		</div>
 		<div class="col-md-10">
 			<!-- Body content -->
 			<ul class="phones">
-				<li ng-repeat='phone in phones | filter:query'>
+				<li ng-repeat='phone in phones | filter:query | orderBy:orderProp'>
 					{{phone.name}}
 					<p>{{phone.snippet}}</p>
 				</li>
