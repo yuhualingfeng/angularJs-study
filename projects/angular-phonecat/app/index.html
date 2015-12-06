@@ -1,57 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='phonecatApp'>
+<html lang="en" ng-app='phonecatApp' ng-controller='PhoneListCtrl'>
 <head>
 	<meta charset="UTF-8">
-	<title>My HTML File</title>
+	<title>Google phone Gallery:{{query}}</title>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="css/app.css">
 <script src='bower_components/angular/angular.js'></script>
 <script type="text/javascript" src='js/controllers.js'></script>
 </head>
-<body ng-controller='PhoneListCtrl'>
-	
-	<ul>
-		<li ng-repeat='phone in phones'>
-			<span>{{phone.name}}</span>
-			<P>{{phone.snippet}}</P>
-		</li>
-	</ul>
-	<p>There has {{phone.length}} phones</p>
-	<p>Hello,{{name}}</p>
+<body >
 
-	<table>
-		<tr><td>row numbers</td></tr>
-		<tr ng-repeat='i in [0,1,2,3,4,5,6,7]'>
-			<td>
-				{{i}}
-			</td>
-		</tr>
-	</table>
-	<table>
-		<tr>
-			<td>row numbers</td>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+			<!-- Slidebar content -->
+			Search: <input type="text" ng-model='query'>
+		</div>
+		<div class="col-md-10">
+			<!-- Body content -->
+			<ul class="phones">
+				<li ng-repeat='phone in phones | filter:query'>
+					{{phone.name}}
+					<p>{{phone.snippet}}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>	
+<p>{{query}}</p>
 
-		</tr>
-		<tr ng-repeat='i in [0,1,2,3,4,5,6,7]'>
-			<td>{{i+1}}</td>
-		</tr>
-	</table>
-		<table>
-		<tr>
-			<td>row numbers</td>
-			<td>row numbers</td>
-			<td>row numbers</td>
-			<td>row numbers</td>
-			<td>row numbers</td>
-			<td>row numbers</td>
-			<td>row numbers</td>
-			<td>row numbers</td>
-		</tr>
-		<tr ng-repeat='i in [[0,1,2,3,4,5,6,7],[0,1,2,3,4,5,6,7],[0,1,2,3,4,5,6,7],[0,1,2,3,4,5,6,7]]'>
-			<td ng-repeat='j in i'>
-				{{j}}
-			</td>
-		</tr>
-	</table>
 </body>
 </html>
