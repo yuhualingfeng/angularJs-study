@@ -42,9 +42,15 @@ phonecatControllers.controller('PhoneDetailCtrl',['$scope','$routeParams','$http
 $http.get('phones/'+$routeParams.phoneId+'.json').success(function(data){
 
 	$scope.phone = data;
+	$scope.mainImgUrl = data.images[0];
 
 });
 $scope.phoneId=$routeParams.phoneId;
+
+$scope.setImg = function (img){
+
+	$scope.mainImgUrl = img;
+}
 
 }]);
 
