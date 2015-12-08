@@ -1,4 +1,4 @@
-var phonecatApp = angular.module(['phonecatApp'],[]);
+var phonecatControllers = angular.module(['phonecatControllers'],[]);
 
 // method 1
 
@@ -27,7 +27,7 @@ phonecatApp.controller('PhoneListCtrl',PhoneListCtrl);*/
 
 // method 3
 
-phonecatApp.controller('PhoneListCtrl',['$scope','$http',function  ($scope,$http) {
+phonecatControllers.controller('PhoneListCtrl',['$scope','$http',function  ($scope,$http) {
 	
 	$http.get('phones/phones.json').success(function  (data) {
 		$scope.phones = data;
@@ -36,6 +36,14 @@ phonecatApp.controller('PhoneListCtrl',['$scope','$http',function  ($scope,$http
 	});
 	$scope.orderProp = 'age';
 }]);
+
+phonecatControllers.controller('PhoneDetailCtrl',['$scope','$routeParams',function($scope,$routeParams){
+
+$scope.phoneId=$routeParams.phoneId;
+
+}]);
+
+
 
 
 
