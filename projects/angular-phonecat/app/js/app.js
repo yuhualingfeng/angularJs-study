@@ -1,4 +1,4 @@
-var phoneApp = angular.module('phonecatApp',['ngRoute','phonecatControllers','phonecatFilters']);
+var phoneApp = angular.module('phonecatApp',['ngRoute','phonecatControllers','phonecatFilters','phonecatServices']);
 phoneApp.config(['$routeProvider',function($routeProvider){
 	$routeProvider.when('/phones',{
 		templateUrl:'partials/phone-list.html',

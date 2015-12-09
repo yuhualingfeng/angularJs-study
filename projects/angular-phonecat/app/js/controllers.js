@@ -27,24 +27,30 @@ phonecatApp.controller('PhoneListCtrl',PhoneListCtrl);*/
 
 // method 3
 
-phonecatControllers.controller('PhoneListCtrl',['$scope','$http',function  ($scope,$http) {
+phonecatControllers.controller('PhoneListCtrl',['$scope','Phone',function  ($scope,Phone) {
 	
-	$http.get('phones/phones.json').success(function  (data) {
+/*	$http.get('phones/phones.json').success(function  (data) {
 		$scope.phones = data;
 		// $scope.phones = data.splice(0, 5);
 
-	});
+	});*/
+
+	$scope.phones = Phone.query();
 	$scope.orderProp = 'age';
 }]);
 
-phonecatControllers.controller('PhoneDetailCtrl',['$scope','$routeParams','$http',function($scope,$routeParams,$http){
+phonecatControllers.controller('PhoneDetailCtrl',['$scope','$routeParams','Phone',function($scope,$routeParams,Phone){
 
-$http.get('phones/'+$routeParams.phoneId+'.json').success(function(data){
 
-	$scope.phone = data;
-	$scope.mainImgUrl = data.images[0];
+// $scope.phone = Phone.get({phoneId:$routeParams.phoneId},function(phone){
+// 	$scope.mainImageUrl = phone.images[0];
 
+// });
+
+$scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+    $scope.mainImgUrl = phone.images[0];
 });
+
 $scope.phoneId=$routeParams.phoneId;
 
 $scope.setImg = function (img){
